@@ -10,6 +10,7 @@ public class MakeShiningTile : MonoBehaviour
     public Tilemap TilemapShining;
     public int width;
     public int height;
+    public int probability;
 
     public List<Dictionary<string, float>> shiningTilesArray = new List<Dictionary<string, float>>();
     public List<Dictionary<string, float>> shiningUsedTilesArray = new List<Dictionary<string, float>>();
@@ -26,8 +27,8 @@ public class MakeShiningTile : MonoBehaviour
                 Vector3Int myPos = new Vector3Int(w, h, 0);
                 if(TilemapBackground.GetTile(myPos) != null)
                 {
-                    int passerNumber = Random.Range(1, 21); //change this number to change spawn probability
-                    int dividedNumber = passerNumber / 20;
+                    int passerNumber = Random.Range(1, probability + 1); //change this number to change spawn probability
+                    int dividedNumber = passerNumber / probability;
                     if(dividedNumber == 1)
                     {
                         TilemapShining.SetTile(myPos, animatedTile);
