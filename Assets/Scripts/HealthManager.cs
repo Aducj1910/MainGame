@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    GameObject healthBar;
+    public GameObject healthBar;
     void Start()
     {
         healthBar.GetComponent<HealthBar>().HealthBarSetup(100);

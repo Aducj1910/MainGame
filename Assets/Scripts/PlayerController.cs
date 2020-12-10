@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
             }
             if (input != Vector2.zero)
             {
+                FindObjectOfType<AudioManager>().Play("walkingSound");
+
                 animator.SetFloat("moveX", input.x);
                 animator.SetFloat("moveY", input.y);
 
