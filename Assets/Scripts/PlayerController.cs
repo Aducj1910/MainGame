@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
             if (i["x"] == transform.position.x && i["y"] == transform.position.y && Input.GetKeyDown(KeyCode.Space))
             {
                 elixirManager.GetComponent<ElixirSystem>().shiningTileTrigger();
+                FindObjectOfType<AudioManager>().Play("shiningPick");
             }
         }
 
