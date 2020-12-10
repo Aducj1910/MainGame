@@ -12,6 +12,7 @@ public class MakeShiningTile : MonoBehaviour
     public int height;
 
     public List<Dictionary<string, float>> shiningTilesArray = new List<Dictionary<string, float>>();
+    public List<Dictionary<string, float>> shiningUsedTilesArray = new List<Dictionary<string, float>>();
 
     void Start()
     {
@@ -41,9 +42,23 @@ public class MakeShiningTile : MonoBehaviour
         }
     }
 
+    //public void destroyShiningTile(float x, float y)
+    //{
+    //    Dictionary<string, float> Coordinates = new Dictionary<string, float>();
+    //    Coordinates.Add("x", x);
+    //    Coordinates.Add("y", y);
+
+    //    shiningUsedTilesArray.Add(Coordinates);
+    //}
+
     public List<Dictionary<string, float>> sendShiningTilesArray()
     {
         return shiningTilesArray;
+    }
+
+    public List<Dictionary<string, float>> sendShiningUsedTilesArray()
+    {
+        return shiningUsedTilesArray;
     }
 }
 

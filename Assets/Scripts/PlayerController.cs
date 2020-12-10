@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,12 +31,13 @@ public class PlayerController : MonoBehaviour
     {
         var shiningTilesArray = backgroundTilemap.GetComponent<MakeShiningTile>().sendShiningTilesArray();
 
-        foreach (Dictionary<string, float> i in shiningTilesArray)
+        foreach (var i in shiningTilesArray)
         {
             if (i["x"] == transform.position.x && i["y"] == transform.position.y && Input.GetKeyDown(KeyCode.Space))
             {
                 elixirManager.GetComponent<ElixirSystem>().shiningTileTrigger();
                 FindObjectOfType<AudioManager>().Play("shiningPick");
+                //FindObjectOfType<MakeShiningTile>().destroyShiningTile(i["x"], i["y"]);
             }
         }
 
