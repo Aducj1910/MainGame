@@ -12,8 +12,8 @@ public class MakeShiningTile : MonoBehaviour
     public int height;
     public int probability;
 
-    public List<Dictionary<string, float>> shiningTilesArray = new List<Dictionary<string, float>>();
-    public List<Dictionary<string, float>> shiningUsedTilesArray = new List<Dictionary<string, float>>();
+    public HashSet<Vector2> shiningTiles = new HashSet<Vector2>();
+    //public List<Dictionary<string, float>> shiningUsedTilesArray = new List<Dictionary<string, float>>();
 
     void Start()
     {
@@ -32,11 +32,7 @@ public class MakeShiningTile : MonoBehaviour
                     if(dividedNumber == 1)
                     {
                         TilemapShining.SetTile(myPos, animatedTile);
-                        Dictionary<string, float> Coordinates = new Dictionary<string, float>();
-                        Coordinates.Add("x", wid);
-                        Coordinates.Add("y", hei);
-
-                        shiningTilesArray.Add(Coordinates);
+                        shiningTiles.Add(new Vector2(wid, hei));
                     }
                 }
             }
@@ -52,14 +48,21 @@ public class MakeShiningTile : MonoBehaviour
     //    shiningUsedTilesArray.Add(Coordinates);
     //}
 
-    public List<Dictionary<string, float>> sendShiningTilesArray()
+    public HashSet<Vector2> getShiningTiles()
     {
-        return shiningTilesArray;
+        return shiningTiles;
     }
 
-    public List<Dictionary<string, float>> sendShiningUsedTilesArray()
+    public void removeShiningTileAt(Vector2 coords)
     {
-        return shiningUsedTilesArray;
+        shiningTiles.Remove(coords);
+        var tilePos = new Vector3Int((int)(coords[0] - 0.5f), (int)(coords[1] - 0.5f), 0);
+        TilemapShining.SetTile(tilePos, null);
     }
+
+    //public List<Dictionary<string, float>> sendShiningUsedTilesArray()
+    //{
+    //    return shiningUsedTilesArray;
+    //}
 }
 

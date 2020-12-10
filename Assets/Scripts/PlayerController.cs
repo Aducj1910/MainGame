@@ -21,23 +21,25 @@ public class PlayerController : MonoBehaviour
     private Vector2 input;
     private Animator animator;
     public LayerMask shiningLayer;
+    private MakeShiningTile makeShiningTile;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        makeShiningTile = backgroundTilemap.GetComponent<MakeShiningTile>();
     }
 
     void Update()
     {
-        var shiningTilesArray = backgroundTilemap.GetComponent<MakeShiningTile>().sendShiningTilesArray();
+        var shiningTiles = makeShiningTile.getShiningTiles();
 
-        foreach (var i in shiningTilesArray)
+        foreach (var i in shiningTiles)
         {
-            if (i["x"] == transform.position.x && i["y"] == transform.position.y && Input.GetKeyDown(KeyCode.Space))
+            if (i[0] == transform.position.x && i[1] == transform.position.y && Input.GetKeyDown(KeyCode.Space))
             {
                 elixirManager.GetComponent<ElixirSystem>().shiningTileTrigger();
                 FindObjectOfType<AudioManager>().Play("shiningPick");
-                //FindObjectOfType<MakeShiningTile>().destroyShiningTile(i["x"], i["y"]);
+                makeShiningTile.removeShiningTileAt(i);
             }
         }
 
