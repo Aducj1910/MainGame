@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ElixirSystem : MonoBehaviour
 {
@@ -15,12 +16,22 @@ public class ElixirSystem : MonoBehaviour
     public static int lightningElixir = 0;
     public static int azureElixir = 0;
 
+    public Text fireText;
+    public Text waterText;
+    public Text ironText;
+    public Text earthText;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log(fireElixir);
         }
+
+        fireText.text = fireElixir.ToString();
+        waterText.text = waterElixir.ToString();
+        ironText.text = ironElixir.ToString();
+        earthText.text = earthElixir.ToString();
     }
 
     public void shiningTileTrigger()
@@ -30,7 +41,5 @@ public class ElixirSystem : MonoBehaviour
         ironElixir = ironElixir + Random.Range(0, 3);
         earthElixir = earthElixir + Random.Range(0, 3);
     }
-
-
 
 }

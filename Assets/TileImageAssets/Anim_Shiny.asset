@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Anim_Shiny
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -1763512508778806713, guid: 762ba1eeee5b6b04189b40f1be75820a, type: 3}
-  - {fileID: -8383239846016255493, guid: 762ba1eeee5b6b04189b40f1be75820a, type: 3}
+  - {fileID: -3778386870002847807, guid: e5a65755ae87e7943af3d7112fbffe87, type: 3}
+  - {fileID: -1784574990025030894, guid: e5a65755ae87e7943af3d7112fbffe87, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0
