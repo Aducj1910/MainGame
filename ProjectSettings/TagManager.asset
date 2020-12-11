@@ -15,7 +15,7 @@ TagManager:
   - 
   - BackgroundLayer
   - ShiningLayer
-  - 
+  - CollisionLayer
   - 
   - 
   - 

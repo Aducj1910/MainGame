@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 input;
     private Animator animator;
     public LayerMask shiningLayer;
+    public LayerMask collisionLayer;
     private MakeShiningTile makeShiningTile;
 
     private void Awake()
@@ -71,8 +72,12 @@ public class PlayerController : MonoBehaviour
                 //    testDialogueAlreadyCalled = true;
                 //}
 
+                if (isWalkable(targetPos))
+                {
+                    StartCoroutine(Move(targetPos));
 
-                StartCoroutine(Move(targetPos));
+                }
+
 
             }
             animator.SetBool("isMoving", isMoving);
@@ -94,16 +99,16 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
     }
 
-    //private bool isWalkable(Vector3 targetPos)
-    //{
-    //    //SolidObjects is layer name defined by LayerMask
-    //    if (Physics2D.OverlapCircle(targetPos, 0.1f, shiningLayer) != null)
-    //    {
-    //        return false;
-    //    }
+    private bool isWalkable(Vector3 targetPos)
+    {
+        //SolidObjects is layer name defined by LayerMask
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, collisionLayer) != null)
+        {
+            return false;
+       }
 
-    //    return true;
-    //}
+        return true;
+    }
 
 }
 
