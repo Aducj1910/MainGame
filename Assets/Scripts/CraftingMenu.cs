@@ -5,7 +5,7 @@ using UnityEngine;
 public class CraftingMenu : MonoBehaviour
 {
     private bool isCrafting;
-    public GameObject craftingCanvas;
+    public GameObject craftingMenuCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +17,11 @@ public class CraftingMenu : MonoBehaviour
     {
         if (isCrafting)
         {
-            craftingCanvas.SetActive(true);
+            craftingMenuCanvas.SetActive(true);
         }
         else
         {
-            craftingCanvas.SetActive(false);
+            craftingMenuCanvas.SetActive(false);
         }
 
         //update isCrafting
