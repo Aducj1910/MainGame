@@ -10,11 +10,12 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        dialogueBox.SetActive(true);
+        dialogueBox.SetActive(false);
     }
 
     public void setText(string[] messageArray)
     {
+        dialogueBox.SetActive(true);
         StartCoroutine(displayText(messageArray));
 
     }
@@ -23,9 +24,13 @@ public class DialogueManager : MonoBehaviour
     {
         foreach(var message in messages)
         {
+            FindObjectOfType<AudioManager>().Play("dialogueAppearSound");
+
             dialogueText.text = message;
             yield return waitForKeyPress(KeyCode.Return);
         }
+
+        dialogueBox.SetActive(false);
     }
 
     private IEnumerator waitForKeyPress(KeyCode key)
