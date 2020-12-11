@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour
 
     private bool testDialogueAlreadyCalled;
 
-    public GameObject testDialogue;
     public GameObject backgroundTilemap;
-    public GameObject elixirManager;
+    private GameObject elixirManager;
+    private GameObject dialogueBox;
     private HealthManager healthManager;
 
     private Vector2 input;
@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         makeShiningTile = backgroundTilemap.GetComponent<MakeShiningTile>();
+        elixirManager = GameObject.Find("ElixirManager");
+        dialogueBox = GameObject.Find("DialogueManager");
     }
 
     void Update()
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("shiningPick");
             makeShiningTile.removeShiningTileAt(transform.position);
         }
-
+            
         if (!isMoving)
         {
 
@@ -99,7 +101,9 @@ public class PlayerController : MonoBehaviour
         //SolidObjects is layer name defined by LayerMask
         if (Physics2D.OverlapCircle(targetPos, 0.2f, collisionLayer) != null)
         {
+            dialogueBox.GetComponent<DialogueManager>().setText(new string[] {"ouch","that hurt" });
             return false;
+
        }
 
         return true;
