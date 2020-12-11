@@ -32,19 +32,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         var shiningTiles = makeShiningTile.getShiningTiles();
-
-        if(shiningTiles.Count != 0)
+        if (shiningTiles.Contains(transform.position) && Input.GetKeyDown(KeyCode.Space))
         {
-        foreach (var i in shiningTiles)
-        {
-            if (i[0] == transform.position.x && i[1] == transform.position.y && Input.GetKeyDown(KeyCode.Space))
-            {
-                elixirManager.GetComponent<ElixirSystem>().shiningTileTrigger();
-                FindObjectOfType<AudioManager>().Play("shiningPick");
-                makeShiningTile.removeShiningTileAt(i);
-            }
-        }
-
+            elixirManager.GetComponent<ElixirSystem>().shiningTileTrigger();
+            FindObjectOfType<AudioManager>().Play("shiningPick");
+            makeShiningTile.removeShiningTileAt(transform.position);
         }
 
         if (!isMoving)
