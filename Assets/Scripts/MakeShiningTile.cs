@@ -13,7 +13,6 @@ public class MakeShiningTile : MonoBehaviour
     public int probability;
 
     public HashSet<Vector2> shiningTiles = new HashSet<Vector2>();
-    //public List<Dictionary<string, float>> shiningUsedTilesArray = new List<Dictionary<string, float>>();
 
     void Start()
     {
@@ -59,10 +58,5 @@ public class MakeShiningTile : MonoBehaviour
         var tilePos = new Vector3Int((int)(coords[0] - 0.5f), (int)(coords[1] - 0.5f), 0);
         TilemapShining.SetTile(tilePos, null);
     }
-
-    //public List<Dictionary<string, float>> sendShiningUsedTilesArray()
-    //{
-    //    return shiningUsedTilesArray;
-    //}
 }
 
