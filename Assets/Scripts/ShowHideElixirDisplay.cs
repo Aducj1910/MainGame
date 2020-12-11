@@ -7,6 +7,13 @@ public class ShowHideElixirDisplay : MonoBehaviour
     public GameObject elixirDisplay;
     bool state = false;
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            SwitchShowHide();
+        }
+    }
 
     public void SwitchShowHide()
     {

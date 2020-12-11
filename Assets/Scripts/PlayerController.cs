@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 input;
     private Animator animator;
-    public LayerMask shiningLayer;
     public LayerMask collisionLayer;
     private MakeShiningTile makeShiningTile;
 
@@ -34,6 +33,8 @@ public class PlayerController : MonoBehaviour
     {
         var shiningTiles = makeShiningTile.getShiningTiles();
 
+        if(shiningTiles.Count != 0)
+        {
         foreach (var i in shiningTiles)
         {
             if (i[0] == transform.position.x && i[1] == transform.position.y && Input.GetKeyDown(KeyCode.Space))
@@ -42,6 +43,8 @@ public class PlayerController : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("shiningPick");
                 makeShiningTile.removeShiningTileAt(i);
             }
+        }
+
         }
 
         if (!isMoving)
