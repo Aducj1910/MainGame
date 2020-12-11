@@ -16,8 +16,8 @@ TagManager:
   - BackgroundLayer
   - ShiningLayer
   - CollisionLayer
-  - 
-  - 
+  - ElixirTilemapSmallHammer
+  - ElixirTilemapMediumDrill
   - 
   - 
   - 
@@ -49,4 +49,10 @@ TagManager:
     locked: 0
   - name: PlayerSortingLayer
     uniqueID: 1506158469
+    locked: 0
+  - name: ElixirTilemapSmallHammerSortingLayer
+    uniqueID: 2698614029
+    locked: 0
+  - name: ElixirTilemapMediumDrillSortingLayer
+    uniqueID: 2907424031
     locked: 0
