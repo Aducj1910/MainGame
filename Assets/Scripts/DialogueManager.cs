@@ -15,19 +15,29 @@ public class DialogueManager : MonoBehaviour
 
     public void setText(string[] messageArray)
     {
-        foreach(var message in messageArray)
+        StartCoroutine(displayText(messageArray));
+
+    }
+
+    private IEnumerator displayText(string[] messages)
+    {
+        foreach(var message in messages)
         {
             dialogueText.text = message;
-
-            bool isDisplaying = true;
-            while (isDisplaying)
-            {
-                if (Input.GetKeyDown(KeyCode.Return))
-                {
-                    isDisplaying = false;
-                }
-            }
+            yield return waitForKeyPress(KeyCode.Return);
         }
+    }
 
+    private IEnumerator waitForKeyPress(KeyCode key)
+    {
+        bool done = false;
+        while (!done) // essentially a "while true", but with a bool to break out naturally
+        {
+            if (Input.GetKeyDown(key))
+            {
+                done = true; // breaks the loop
+            }
+            yield return null; // wait until next frame, then continue execution from here (loop continues)
+        }
     }
 }

@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     private bool isMoving;
 
-    private bool testDialogueAlreadyCalled;
-
     public GameObject backgroundTilemap;
     private GameObject elixirManager;
     private GameObject dialogueBox;
@@ -101,7 +99,8 @@ public class PlayerController : MonoBehaviour
         //SolidObjects is layer name defined by LayerMask
         if (Physics2D.OverlapCircle(targetPos, 0.2f, collisionLayer) != null)
         {
-            dialogueBox.GetComponent<DialogueManager>().setText(new string[] {"ouch","that hurt" });
+
+            dialogueBox.GetComponent<DialogueManager>().setText(new string[] { "ouch", "that hurt" });
             return false;
 
        }
