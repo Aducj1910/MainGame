@@ -10376,7 +10376,7 @@ MonoBehaviour:
   TilemapShining: {fileID: 326906904}
   width: 100
   height: 100
-  probability: 60
+  probability: 100
 --- !u!1 &905433312
 GameObject:
   m_ObjectHideFlags: 0
