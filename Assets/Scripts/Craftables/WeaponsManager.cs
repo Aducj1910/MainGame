@@ -5,12 +5,16 @@ using UnityEngine;
 public class WeaponsManager : MonoBehaviour
 {
     public Weapon[] weapons;
-    private GameObject elixirManager;
+
+    private Vector3[] objectPositions;
+
     void Start()
     {
 
     }
-    void Update()
-    {
-    }
+
+    //vector3 pos x = 0, y = 140 then -40 for each
+
+    private GameObject elixirManager;
+
 }
