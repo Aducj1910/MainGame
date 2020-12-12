@@ -14,8 +14,11 @@ public class RenderWeapons : MonoBehaviour
 
         Weapon[] weapons = FindObjectOfType<WeaponsManager>().weapons;
 
-        GameObject g;
+        //Get elixir values 
+        GameObject elixirManager = GameObject.Find("ElixirManager");
+        int[] elixirsArray = elixirManager.GetComponent<ElixirSystem>().getElixirOrdered();
 
+        GameObject g;
         foreach (var weapon in weapons)
         {
             g = Instantiate(weaponTemplate, transform);
@@ -27,18 +30,19 @@ public class RenderWeapons : MonoBehaviour
             gName.GetComponent<TMPro.TextMeshProUGUI>().text = weapon.name;
             gDesc.GetComponent<TMPro.TextMeshProUGUI>().text = weapon.description;
 
-
-            GameObject elixirManager = GameObject.Find("ElixirManager");
-            var elixirDict = elixirManager.GetComponent<ElixirSystem>().getElixirString();
             GameObject gElixirCost = gButton.transform.GetChild(1).gameObject;
 
-            int[] costs = new int[] { weapon.fireElixir, weapon.waterElixir, weapon.ironElixir, weapon.earthElixir };
+            int[] costs = weapon.getElixirCosts();
+
             for (int i = 0; i <4; i++)
             {
                 GameObject gCost = gElixirCost.transform.GetChild(i).gameObject;
                 GameObject gCostText = gCost.transform.GetChild(0).gameObject;
                 gCostText.GetComponent<TMPro.TextMeshProUGUI>().text = costs[i].ToString();
-
+                if (costs[i] > elixirsArray[i])
+                {
+                    gCostText.GetComponent<TMPro.TextMeshProUGUI>().color = new Color32(255, 0, 0, 255);
+                }
             }
             
 

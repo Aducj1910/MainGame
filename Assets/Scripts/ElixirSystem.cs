@@ -35,26 +35,23 @@ public class ElixirSystem : MonoBehaviour
         earthElixir = earthElixir + Random.Range(0, 3);
     }
 
-    public Dictionary<string, int>[] getElixirString()
+    public Hashtable getElixirMapping()
     {
-        Dictionary<string, int>[] elixirArray = new Dictionary<string, int>[7];
-        elixirArray[0] = new Dictionary<string, int>();
-        elixirArray[1] = new Dictionary<string, int>();
-        elixirArray[2] = new Dictionary<string, int>();
-        elixirArray[3] = new Dictionary<string, int>();
-        elixirArray[4] = new Dictionary<string, int>();
-        elixirArray[5] = new Dictionary<string, int>();
-        elixirArray[6] = new Dictionary<string, int>();
+        Hashtable elixirMapping = new Hashtable();
+        elixirMapping.Add("fire", fireElixir);
+        elixirMapping.Add("water", waterElixir);
+        elixirMapping.Add("iron", ironElixir);
+        elixirMapping.Add("earth", earthElixir);
+        elixirMapping.Add("basmium", basmiumElixir);
+        elixirMapping.Add("lightning", lightningElixir);
+        elixirMapping.Add("azure", azureElixir);
 
+        return elixirMapping;
+    }
 
-        elixirArray[0].Add("fire", fireElixir);
-        elixirArray[1].Add("water", waterElixir);
-        elixirArray[2].Add("iron", ironElixir);
-        elixirArray[3].Add("earth", earthElixir);
-        elixirArray[4].Add("basmium", basmiumElixir);
-        elixirArray[5].Add("lightning", lightningElixir);
-        elixirArray[6].Add("azure", azureElixir);
-
-        return elixirArray;
-    } 
+    public int[] getElixirOrdered()
+    {
+        int[] elixirsOrdered = new int[] { fireElixir, waterElixir, ironElixir, earthElixir, basmiumElixir, lightningElixir, azureElixir};
+        return elixirsOrdered;
+    }
 }

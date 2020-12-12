@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Craftable
 {
-    //Elixirs required for crafting
+    //Elixir costs
     public int fireElixir;
     public int waterElixir;
     public int earthElixir;
@@ -18,5 +18,12 @@ public class Craftable
     public string name;
     public string description;
     public Sprite assetImage;
+
+    //Function to get ordered list of Elixir Costs
+    public int[] getElixirCosts()
+    {
+        int[] elixirCosts = new int[] { fireElixir, waterElixir, ironElixir, earthElixir, basmiumElixir, lightningElixir, azureElixir };
+        return elixirCosts;
+    }
 }
 
