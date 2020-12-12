@@ -6,4 +6,5 @@ using UnityEngine;
 public class Weapon : Craftable
 {
     public int damage;
+    public int rateOfFire;
 }

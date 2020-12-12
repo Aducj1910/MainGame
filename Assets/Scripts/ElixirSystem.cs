@@ -16,22 +16,15 @@ public class ElixirSystem : MonoBehaviour
     public static int lightningElixir = 0;
     public static int azureElixir = 0;
 
-    public Text fireText;
-    public Text waterText;
-    public Text ironText;
-    public Text earthText;
+    public bool onGameScreen;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (onGameScreen)
         {
-            Debug.Log(fireElixir);
+            GameObject elixirDisplaySystem = GameObject.Find("ElixirDisplayManager");
+            elixirDisplaySystem.GetComponent<ElixirDisplaySystemScript>().updateElixirText(fireElixir, waterElixir, ironElixir, earthElixir, basmiumElixir, lightningElixir, azureElixir);
         }
-
-        fireText.text = fireElixir.ToString();
-        waterText.text = waterElixir.ToString();
-        ironText.text = ironElixir.ToString();
-        earthText.text = earthElixir.ToString();
     }
 
     public void shiningTileTrigger()
@@ -42,4 +35,26 @@ public class ElixirSystem : MonoBehaviour
         earthElixir = earthElixir + Random.Range(0, 3);
     }
 
+    public Dictionary<string, int>[] getElixirString()
+    {
+        Dictionary<string, int>[] elixirArray = new Dictionary<string, int>[7];
+        elixirArray[0] = new Dictionary<string, int>();
+        elixirArray[1] = new Dictionary<string, int>();
+        elixirArray[2] = new Dictionary<string, int>();
+        elixirArray[3] = new Dictionary<string, int>();
+        elixirArray[4] = new Dictionary<string, int>();
+        elixirArray[5] = new Dictionary<string, int>();
+        elixirArray[6] = new Dictionary<string, int>();
+
+
+        elixirArray[0].Add("fire", fireElixir);
+        elixirArray[1].Add("water", waterElixir);
+        elixirArray[2].Add("iron", ironElixir);
+        elixirArray[3].Add("earth", earthElixir);
+        elixirArray[4].Add("basmium", basmiumElixir);
+        elixirArray[5].Add("lightning", lightningElixir);
+        elixirArray[6].Add("azure", azureElixir);
+
+        return elixirArray;
+    } 
 }

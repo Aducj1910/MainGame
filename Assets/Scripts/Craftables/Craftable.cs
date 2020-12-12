@@ -17,5 +17,6 @@ public class Craftable
     //Display info
     public string name;
     public string description;
-    public string assetImage; 
+    public Sprite assetImage;
 }
+

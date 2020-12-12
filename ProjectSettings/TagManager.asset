@@ -47,9 +47,6 @@ TagManager:
   - name: ShiningSortingLayer
     uniqueID: 967342503
     locked: 0
-  - name: PlayerSortingLayer
-    uniqueID: 1506158469
-    locked: 0
   - name: ElixirTilemapSmallHammerSortingLayer
     uniqueID: 2698614029
     locked: 0
