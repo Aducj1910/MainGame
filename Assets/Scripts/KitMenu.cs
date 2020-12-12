@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CraftingMenu : MonoBehaviour
+public class KitMenu : MonoBehaviour
 {
     private bool isCrafting;
     public GameObject craftingMenuCanvas;

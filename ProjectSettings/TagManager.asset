@@ -56,3 +56,6 @@ TagManager:
   - name: ElixirTilemapMediumDrillSortingLayer
     uniqueID: 2907424031
     locked: 0
+  - name: PlayerSortingLayer
+    uniqueID: 1360574261
+    locked: 0
