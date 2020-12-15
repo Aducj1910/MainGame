@@ -6,6 +6,4 @@ public class WeaponsManager : MonoBehaviour
 {
     public Weapon[] weapons;
 
-    
-
 }

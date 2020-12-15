@@ -25,6 +25,13 @@ public class ElixirSystem : MonoBehaviour
             GameObject elixirDisplaySystem = GameObject.Find("ElixirDisplayManager");
             elixirDisplaySystem.GetComponent<ElixirDisplaySystemScript>().updateElixirText(fireElixir, waterElixir, ironElixir, earthElixir, basmiumElixir, lightningElixir, azureElixir);
         }
+
+        //TESTING ONLY
+        if (Input.GetKeyDown(KeyCode.KeypadPeriod)) //ONLY TO BE USED FOR TESTING PURPOSES, REMOVE AFTER TESTING PHASE
+        {
+            fireElixir = 20; waterElixir = 20; ironElixir = 20; earthElixir = 20;
+        }
+        //XXXXXXX
     }
 
     public void shiningTileTrigger()
