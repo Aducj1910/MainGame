@@ -12,14 +12,23 @@ public class PlayerController : MonoBehaviour
     private bool isMoving;
 
     public GameObject backgroundTilemap;
+    [HideInInspector] public Vector3 facingDirection;
+
     private GameObject elixirManager;
     private GameObject dialogueBox;
     private HealthManager healthManager;
 
     private Vector2 input;
     private Animator animator;
-    public LayerMask collisionLayer;
     private MakeShiningTile makeShiningTile;
+
+    public LayerMask collisionLayer;
+    public LayerMask interactableLayer;
+
+    public Vector3 getFacingDirection()
+    {
+        return facingDirection;
+    }
 
     private void Awake()
     {
@@ -61,12 +70,6 @@ public class PlayerController : MonoBehaviour
                 targetPos.x += input.x;
                 targetPos.y += input.y;
 
-                //if (Physics2D.OverlapCircle(targetPos, 0.1f, solidObjectsLayer) != null && !testDialogueAlreadyCalled)
-                //{
-                //    testDialogue.GetComponent<TestDialogue>().SendSignal();
-                //    testDialogueAlreadyCalled = true;
-                //}
-
                 if (isWalkable(targetPos))
                 {
                     StartCoroutine(Move(targetPos));
@@ -76,6 +79,23 @@ public class PlayerController : MonoBehaviour
 
             }
             animator.SetBool("isMoving", isMoving);
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                Interact(); 
+            }
+        }
+    }
+
+    void Interact()
+    {
+        facingDirection = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        var interactPosition = transform.position + facingDirection;
+        var collider = Physics2D.OverlapCircle(interactPosition, 0.3f, interactableLayer);
+
+        if (collider != null)
+        {
+            collider.GetComponent<Interactable>()?.Interact();
         }
     }
 
@@ -97,10 +117,8 @@ public class PlayerController : MonoBehaviour
     private bool isWalkable(Vector3 targetPos)
     {
         //SolidObjects is layer name defined by LayerMask
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, collisionLayer) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, collisionLayer | interactableLayer) != null)
         {
-
-            dialogueBox.GetComponent<DialogueManager>().setText(new string[] { "ouch", "that hurt" });
             return false;
 
        }
