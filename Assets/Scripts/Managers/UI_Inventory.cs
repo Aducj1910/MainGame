@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Inventory : MonoBehaviour
 {
@@ -28,7 +29,6 @@ public class UI_Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             refreshInventorySlots();
-            Debug.Log(weapons[0].name);
         }
     }
 
@@ -46,11 +46,14 @@ public class UI_Inventory : MonoBehaviour
                 RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
                 itemSlotRectTransform.gameObject.SetActive(true);
                 itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+                Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
+                image.sprite = weapon.assetImage;
+
                 x++;
-                if (x > 4)
+                if (x > 3)
                 {
                     x = 0;
-                    y++;
+                    y--;
                 }
 
             }
