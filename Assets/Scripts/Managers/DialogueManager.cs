@@ -7,6 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
     public Text dialogueText;
     public GameObject dialogueBox;
+    public bool dialogueEnded;
 
     void Start()
     {
@@ -20,16 +21,24 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    public bool dialogueEndedReturn()
+    {
+        return dialogueEnded;
+    }
+
     private IEnumerator displayText(string[] messages)
     {
         foreach(var message in messages)
         {
+            dialogueEnded = false;
+
             FindObjectOfType<AudioManager>().Play("dialogueAppearSound");
 
             dialogueText.text = message;
             yield return waitForKeyPress(KeyCode.Return);
         }
 
+        dialogueEnded = true;
         dialogueBox.SetActive(false);
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public List<Weapon> inventoryWeapons;
+
     public static Weapon currentWeapon;
 
     public void addWeapon(Weapon w)

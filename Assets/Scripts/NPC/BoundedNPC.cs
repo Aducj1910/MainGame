@@ -11,6 +11,7 @@ public class BoundedNPC : MonoBehaviour
     private Animator anim;
     public Collider2D bounds;
     public GameObject playerController;
+    private GameObject dialogueManager;
 
     [HideInInspector] public bool isInteracting = false;
 
@@ -19,12 +20,20 @@ public class BoundedNPC : MonoBehaviour
         myTransform = GetComponent<Transform>();
         myRigidBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        dialogueManager = GameObject.Find("DialogueManager");
 
         ChangeDirection();
     }
 
     void Update()
     {
+        //Debug.Log(dialogueManager.GetComponent<DialogueManager>().dialogueEndedReturn());
+
+        if (isInteracting && dialogueManager.GetComponent<DialogueManager>().dialogueEndedReturn())
+        {
+            isInteracting = false;
+        }
+
         if (!isInteracting)
         {
         Move();

@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     {
         facingDirection = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
         var interactPosition = transform.position + facingDirection;
-        var collider = Physics2D.OverlapCircle(interactPosition, 0.3f, interactableLayer);
+        var collider = Physics2D.OverlapCircle(interactPosition, 0.6f, interactableLayer);
 
         if (collider != null)
         {
