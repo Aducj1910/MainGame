@@ -27,7 +27,7 @@ public class ElixirSystem : MonoBehaviour
         }
 
         //TESTING ONLY
-        if (Input.GetKeyDown(KeyCode.KeypadPeriod)) //ONLY TO BE USED FOR TESTING PURPOSES, REMOVE AFTER TESTING PHASE
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)) //ONLY TO BE USED FOR TESTING PURPOSES, REMOVE AFTER TESTING PHASE
         {
             fireElixir = 20; waterElixir = 20; ironElixir = 20; earthElixir = 20;
         }
