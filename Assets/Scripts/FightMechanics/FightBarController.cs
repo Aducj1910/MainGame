@@ -5,7 +5,7 @@ using UnityEngine;
 public class FightBarController : MonoBehaviour
 {
 
-    public float moveSpeed;
+    private float moveSpeed;
     private bool isMoving;
     private int direction; //positive for up, negative for down
 
@@ -107,5 +107,10 @@ public class FightBarController : MonoBehaviour
             transform.position = tar;
             direction = -direction;
         }
+    }
+
+    public void changeBarSpeed(float rate)
+    {
+        moveSpeed = rate;
     }
 }

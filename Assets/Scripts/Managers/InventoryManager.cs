@@ -23,4 +23,9 @@ public class InventoryManager : MonoBehaviour
         currentWeapon = weap;
         Debug.Log(weap.name);
     }
+
+    public Weapon getCurrentWeapon()
+    {
+        return currentWeapon;
+    }
 }
