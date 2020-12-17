@@ -35843,6 +35843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1807270394}
   - component: {fileID: 1807270395}
+  - component: {fileID: 1807270396}
   m_Layer: 0
   m_Name: FightSetup
   m_TagString: Untagged
@@ -35874,6 +35875,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31d7951504cb8f04eb59cc2cbcd1218b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1807270396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807270393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd74a6aed93a4143b7dd49cfc5e8e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1826678050
@@ -36030,12 +36043,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e018edd21ec7d12409614ff572105d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 1209391232}
   boundedNPC: {fileID: 0}
+  fightBar: {fileID: 1920118022}
   dialogueArray:
   - Hey  there
   - Need  any  help?
-  fightingNPC: 0
+  fightingNPC: 1
+  opponentDamage: 0
 --- !u!61 &1826678057
 BoxCollider2D:
   m_ObjectHideFlags: 0

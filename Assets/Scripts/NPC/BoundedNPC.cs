@@ -10,8 +10,11 @@ public class BoundedNPC : MonoBehaviour
     private Rigidbody2D myRigidBody;
     private Animator anim;
     public Collider2D bounds;
+
     public GameObject playerController;
     private GameObject dialogueManager;
+    private GameObject fightSetup;
+    private bool fightEnded;
 
     [HideInInspector] public bool isInteracting = false;
 
@@ -21,6 +24,7 @@ public class BoundedNPC : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         dialogueManager = GameObject.Find("DialogueManager");
+        fightSetup = GameObject.Find("FightSetup");
 
         ChangeDirection();
     }
@@ -34,7 +38,11 @@ public class BoundedNPC : MonoBehaviour
             isInteracting = false;
         }
 
-        if (!isInteracting)
+        //We will add new condition to see if fight has ended or not
+        fightEnded = fightSetup.GetComponent<FightSetup>().getFightEndedStatus();
+
+
+        if (!isInteracting && fightEnded)
         {
         Move();
         }

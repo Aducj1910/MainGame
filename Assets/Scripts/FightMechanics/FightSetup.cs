@@ -6,11 +6,18 @@ public class FightSetup : MonoBehaviour
 {
     private GameObject indicator;
     private GameObject inventoryManager;
+    private GameObject fightBar;
+
+    [HideInInspector] public static bool fightEnded;
 
     void Awake()
     {
         indicator = GameObject.Find("Indicator");
         inventoryManager = GameObject.Find("InventoryManager");
+        fightBar = GameObject.Find("FightBar");
+        fightEnded = true;
+
+        fightBar.SetActive(false);
     }
     
     void Update()
@@ -22,4 +29,15 @@ public class FightSetup : MonoBehaviour
             indicator.GetComponent<FightBarController>().changeBarSpeed(rateOfFire);
         }
     }
+
+    public void setFightEndedStatus(bool tempFightEnded)
+    {
+        fightEnded = tempFightEnded;
+    }
+
+    public bool getFightEndedStatus()
+    {
+        return fightEnded;
+    }
+
 }
