@@ -36032,6 +36032,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1209391232}
   boundedNPC: {fileID: 0}
+  dialogueArray:
+  - Hey  there
+  - Need  any  help?
+  fightingNPC: 0
 --- !u!61 &1826678057
 BoxCollider2D:
   m_ObjectHideFlags: 0

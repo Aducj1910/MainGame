@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class NPC_Controller : MonoBehaviour, Interactable
 {
-    public GameObject dialogueManager; 
+    public GameObject dialogueManager;
+    public string[] dialogueArray;
+    public bool fightingNPC;
+
+    public float opponentDamage;
 
     public void Interact()
     {
-        dialogueManager.GetComponent<DialogueManager>().setText(new string[] { "Hello  there...", 
-            "I  see  you're  not  from  around  here.", 
-            "Perhaps  you  could  use  a  little  help  crossing  that  broken  bridge  over  there" });
+        dialogueManager.GetComponent<DialogueManager>().setText(dialogueArray);
     }
 }

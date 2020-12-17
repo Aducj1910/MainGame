@@ -26,7 +26,7 @@ public class RenderWeapons : MonoBehaviour
             GameObject gName = gImage.transform.GetChild(0).gameObject;
             GameObject gDesc = gImage.transform.GetChild(1).gameObject;
             gName.GetComponent<TMPro.TextMeshProUGUI>().text = weapon.name;
-            gDesc.GetComponent<TMPro.TextMeshProUGUI>().text = weapon.description;
+            gDesc.GetComponent<TMPro.TextMeshProUGUI>().text = "Damage: " + weapon.damage.ToString() + " Rate of fire: " + weapon.rateOfFire.ToString();
 
             GameObject gElixirCost = gButton.transform.GetChild(1).gameObject;
 

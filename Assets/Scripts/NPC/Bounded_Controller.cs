@@ -7,6 +7,11 @@ public class Bounded_Controller : MonoBehaviour, Interactable
     public GameObject dialogueManager;
     [HideInInspector] public GameObject boundedNPC;
 
+    public string[] dialogueArray;
+    public bool fightingNPC;
+
+    public float opponentDamage;
+
     void Awake()
     {
         boundedNPC = GameObject.Find("NPC");
@@ -14,9 +19,7 @@ public class Bounded_Controller : MonoBehaviour, Interactable
 
     public void Interact()
     {
-        dialogueManager.GetComponent<DialogueManager>().setText(new string[] { "Hello  there...",
-            "I  see  you're  not  from  around  here.",
-            "Perhaps  you  could  use  a  little  help  crossing  that  broken  bridge  over  there" });
+        dialogueManager.GetComponent<DialogueManager>().setText(dialogueArray);
 
         boundedNPC.GetComponent<BoundedNPC>().setIsInteracting();
     }
