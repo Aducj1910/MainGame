@@ -118,6 +118,11 @@ public class FightBarController : MonoBehaviour
         }
     }
 
+    public void setIsMoving(bool receievedBool)
+    {
+        isMoving = receievedBool;
+    }
+
     public void changeBarSpeed(float rate)
     {
         moveSpeed = rate;

@@ -21,6 +21,7 @@ public class Bounded_Controller : MonoBehaviour, Interactable
     private GameObject fightSetup;
     private GameObject inventoryManager;
     private GameObject healthManager;
+    private GameObject opponentHealthBar;
 
     private Weapon activeWeapon;
 
@@ -38,7 +39,10 @@ public class Bounded_Controller : MonoBehaviour, Interactable
         fightSetup = GameObject.Find("FightSetup");
         inventoryManager = GameObject.Find("InventoryManager");
         healthManager = GameObject.Find("HealthManager");
+        opponentHealthBar = GameObject.Find("OpponentHealthBar");
         fightStatusActive = false;
+
+        opponentHealthBar.GetComponent<HealthBar>().HealthBarSetup(opponentHP);
     }
     
     void Update()
@@ -72,7 +76,7 @@ public class Bounded_Controller : MonoBehaviour, Interactable
     public void checkIfFighting()
     {
         barColor = indicator.GetComponent<FightBarController>().getBarColor();
-        if (fightStatusActive)
+        if (fightStatusActive && opponentHP > 0)
         {
             fight();
         }
@@ -105,16 +109,19 @@ public class Bounded_Controller : MonoBehaviour, Interactable
                 var mul = Random.Range(19, 24);
                 opponentHP = opponentHP - (activeWeapon.damage * mul);
             }
-            handleOpponentAttack();
+            StartCoroutine(handleOpponentAttack());
         }
     }
 
-    private void handleOpponentAttack()
+    IEnumerator handleOpponentAttack()
     {
         var changeInHP = Random.Range(1, 4);
         var damageDealt = changeInHP * opponentDamage;
 
         healthManager.GetComponent<HealthManager>().updateHealth(-1 * damageDealt);
+        opponentHealthBar.GetComponent<HealthBar>().SetHealth(opponentHP);
+        yield return new WaitForSeconds(3);
+        indicator.GetComponent<FightBarController>().setIsMoving(true);
     }
 
 }
