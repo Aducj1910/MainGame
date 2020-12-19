@@ -36045,11 +36045,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boundedNPC: {fileID: 0}
   fightBar: {fileID: 1920118022}
+  indicator: {fileID: 867024960}
   dialogueArray:
   - Hey  there
   - Need  any  help?
   fightingNPC: 1
-  opponentDamage: 0
+  opponentDamage: 8
+  opponentHP: 75
 --- !u!61 &1826678057
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -2030,6 +2030,7 @@ MonoBehaviour:
     assetImage: {fileID: -428846162874942557, guid: f34dc8f41c2f97d41b7e3b1798a64b5c,
       type: 3}
     damage: 12
+    handling: 2
     rateOfFire: 8
   - fireElixir: 1
     waterElixir: 2
@@ -2043,6 +2044,7 @@ MonoBehaviour:
     assetImage: {fileID: -8368270340110289419, guid: f34dc8f41c2f97d41b7e3b1798a64b5c,
       type: 3}
     damage: 7
+    handling: 6
     rateOfFire: 4
   - fireElixir: 2
     waterElixir: 1
@@ -2056,6 +2058,7 @@ MonoBehaviour:
     assetImage: {fileID: 7287976494194388105, guid: f34dc8f41c2f97d41b7e3b1798a64b5c,
       type: 3}
     damage: 3
+    handling: 8
     rateOfFire: 3
   - fireElixir: 2
     waterElixir: 1
@@ -2069,6 +2072,7 @@ MonoBehaviour:
     assetImage: {fileID: 704897558614422922, guid: f34dc8f41c2f97d41b7e3b1798a64b5c,
       type: 3}
     damage: 3
+    handling: 6
     rateOfFire: 3
   - fireElixir: 2
     waterElixir: 1
@@ -2082,6 +2086,7 @@ MonoBehaviour:
     assetImage: {fileID: -7972684559215338029, guid: f34dc8f41c2f97d41b7e3b1798a64b5c,
       type: 3}
     damage: 3
+    handling: 1
     rateOfFire: 3
   - fireElixir: 2
     waterElixir: 1
@@ -2095,6 +2100,7 @@ MonoBehaviour:
     assetImage: {fileID: 5905603752547928858, guid: f34dc8f41c2f97d41b7e3b1798a64b5c,
       type: 3}
     damage: 3
+    handling: 7
     rateOfFire: 3
 --- !u!1 &838817207
 GameObject:

@@ -12,8 +12,12 @@ public class FightBarController : MonoBehaviour
     private Vector3 targetPos; 
 
     private GameObject fightBarImg;
+    private GameObject boundedNPC_Controller;
+
     private float barHeight;
     private float barY;
+
+    private string barColor;
 
     //here we define the regions of the bar
     float topRedUpper;
@@ -34,10 +38,14 @@ public class FightBarController : MonoBehaviour
     {
         isMoving = true;
         fightBarImg = GameObject.Find("FightBarBackground");
+        boundedNPC_Controller = GameObject.Find("NPC");
         direction = -1;
 
         barHeight = fightBarImg.GetComponent<RectTransform>().rect.width; //it's rotated so width here refers to height
         barY = fightBarImg.transform.position.y;
+
+        //Assigns a default barcolor value to avoid null reference exception
+        barColor = "default";
 
         //Here we define some variables for ease of use in defining colour region floats
         var halfBarHeight = barHeight / 2;
@@ -69,16 +77,17 @@ public class FightBarController : MonoBehaviour
             isMoving = false;
             if ((transform.position.y > topRedLower && transform.position.y < topRedUpper) || (transform.position.y > bottomRedLower && transform.position.y < bottomRedUpper))
             {
-                Debug.Log("Red");
+                barColor = "red";
             }
             else if ((transform.position.y > topYellowLower && transform.position.y < topYellowUpper) || (transform.position.y > bottomYellowLower && transform.position.y < bottomYellowUpper))
             {
-                Debug.Log("Yellow");
+                barColor = "yellow";
             }
             else if(transform.position.y > greenLower && transform.position.y < greenUpper)
             {
-                Debug.Log("Green");
+                barColor = "green";
             }
+            boundedNPC_Controller.GetComponent<Bounded_Controller>().checkIfFighting();
         }
 
         if (isMoving)
@@ -112,5 +121,10 @@ public class FightBarController : MonoBehaviour
     public void changeBarSpeed(float rate)
     {
         moveSpeed = rate;
+    }
+
+    public string getBarColor()
+    {
+       return barColor;
     }
 }

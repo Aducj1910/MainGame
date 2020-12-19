@@ -41,7 +41,6 @@ public class BoundedNPC : MonoBehaviour
         //We will add new condition to see if fight has ended or not
         fightEnded = fightSetup.GetComponent<FightSetup>().getFightEndedStatus();
 
-
         if (!isInteracting && fightEnded)
         {
         Move();

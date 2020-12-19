@@ -6,7 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     public List<Weapon> inventoryWeapons;
 
-    public static Weapon currentWeapon;
+    public static Weapon currentWeapon = new Weapon();
 
     public void addWeapon(Weapon w)
     {

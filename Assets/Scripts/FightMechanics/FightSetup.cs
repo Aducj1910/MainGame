@@ -25,7 +25,7 @@ public class FightSetup : MonoBehaviour
         Weapon curWeap = inventoryManager.GetComponent<InventoryManager>().getCurrentWeapon();
         if(curWeap != null)
         {
-            float rateOfFire = 10f - ((float)curWeap.rateOfFire); //change this line of code when changin the algo for indicator speed
+            float rateOfFire = 10f - ((float)curWeap.handling); //change this line of code when changin the algo for indicator speed
             indicator.GetComponent<FightBarController>().changeBarSpeed(rateOfFire);
         }
     }
