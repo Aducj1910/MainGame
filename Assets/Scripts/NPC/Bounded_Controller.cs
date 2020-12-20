@@ -44,7 +44,7 @@ public class Bounded_Controller : MonoBehaviour, Interactable
 
         opponentHealthBar.GetComponent<HealthBar>().HealthBarSetup(opponentHP);
     }
-    
+
     void Update()
     {
         if (interacting && fightingNPC)
@@ -53,10 +53,10 @@ public class Bounded_Controller : MonoBehaviour, Interactable
             dialogueEnded =  diagManager.GetComponent<DialogueManager>().dialogueEndedReturn();
             if (dialogueEnded)
             {
-                fightSetup.GetComponent<FightSetup>().setFightEndedStatus(false);
                 fightBar.SetActive(true);
 
                 fightStatusActive = true;
+
                 //if(fightLoopCounter < 1) // change the 1 to a variable to change number of times
                 //{
                 //    fight();
@@ -78,6 +78,7 @@ public class Bounded_Controller : MonoBehaviour, Interactable
         barColor = indicator.GetComponent<FightBarController>().getBarColor();
         if (fightStatusActive && opponentHP > 0)
         {
+            fightSetup.GetComponent<FightSetup>().setFightEndedStatus(false);
             fight();
         }
     }
@@ -119,9 +120,17 @@ public class Bounded_Controller : MonoBehaviour, Interactable
         var damageDealt = changeInHP * opponentDamage;
 
         healthManager.GetComponent<HealthManager>().updateHealth(-1 * damageDealt);
-        opponentHealthBar.GetComponent<HealthBar>().SetHealth(opponentHP);
-        yield return new WaitForSeconds(3);
-        indicator.GetComponent<FightBarController>().setIsMoving(true);
-    }
 
+        opponentHealthBar.GetComponent<HealthBar>().SetHealth(opponentHP);
+
+        if(opponentHP < 0)
+        {
+            fightSetup.GetComponent<FightSetup>().setFightEndedStatus(true);
+        }
+        else
+        {
+            yield return new WaitForSeconds(3);
+            indicator.GetComponent<FightBarController>().setIsMoving(true);
+        }
+    }
 }

@@ -43,7 +43,7 @@ public class BoundedNPC : MonoBehaviour
 
         if (!isInteracting && fightEnded)
         {
-        Move();
+            Move();
         }
         else
         {
