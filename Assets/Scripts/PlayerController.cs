@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject elixirManager;
     private GameObject dialogueBox;
+    private GameObject inventoryManager;
     private HealthManager healthManager;
 
     private Vector2 input;
@@ -24,7 +25,9 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask collisionLayer;
     public LayerMask interactableLayer;
-
+    //now private
+    public LayerMask elixirSmallHammerLayer;
+    private LayerMask elixirMediumDrillLayer;
     public Vector3 getFacingDirection()
     {
         return facingDirection;
@@ -36,6 +39,10 @@ public class PlayerController : MonoBehaviour
         makeShiningTile = backgroundTilemap.GetComponent<MakeShiningTile>();
         elixirManager = GameObject.Find("ElixirManager");
         dialogueBox = GameObject.Find("DialogueManager");
+        inventoryManager = GameObject.Find("InventoryManager");
+
+        //elixirSmallHammerLayer = LayerMask.NameToLayer("ElixirTilemapSmallHammer");
+        elixirMediumDrillLayer = LayerMask.NameToLayer("ElixirTilemapMediumDrill");
     }
 
     void Update()
@@ -84,6 +91,10 @@ public class PlayerController : MonoBehaviour
             {
                 Interact(); 
             }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ObtainElixir();
+            }
         }
     }
 
@@ -96,6 +107,16 @@ public class PlayerController : MonoBehaviour
         if (collider != null)
         {
             collider.GetComponent<Interactable>()?.Interact();
+        }
+    }
+
+    void ObtainElixir()
+    {
+        Tool currentTool = inventoryManager.GetComponent<InventoryManager>().getCurrentTool();
+
+        if(Physics2D.OverlapCircle(transform.position, 0.6f, elixirSmallHammerLayer) != null && currentTool.toolId == 1)
+        {
+            Debug.Log("Yess");
         }
     }
 

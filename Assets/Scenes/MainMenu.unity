@@ -310,7 +310,7 @@ MonoBehaviour:
     description: It's a hammer
     assetImage: {fileID: 4826937848284144053, guid: 5b0b16c5fde92c0419a45e5f0f5dd951,
       type: 3}
-    toolId: 0
+    toolId: 1
   - fireElixir: 0
     waterElixir: 0
     earthElixir: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
     description: tis a drill
     assetImage: {fileID: -1005081385042911177, guid: 5b0b16c5fde92c0419a45e5f0f5dd951,
       type: 3}
-    toolId: 1
+    toolId: 2
 --- !u!1 &111256351
 GameObject:
   m_ObjectHideFlags: 0

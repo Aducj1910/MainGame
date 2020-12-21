@@ -34,6 +34,7 @@ public class FightSetup : MonoBehaviour
 
     public void setFightEndedStatus(bool tempFightEnded)
     {
+        //Debug.Log(tempFightEnded);
         fightEnded = tempFightEnded;
     }
 
