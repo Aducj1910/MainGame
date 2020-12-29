@@ -56,6 +56,15 @@ public class ElixirSystem : MonoBehaviour
         return elixirMapping;
     }
 
+    public void elixirSmallHammerTrigger()
+    {
+        fireElixir = fireElixir + Random.Range(4, 7);
+        waterElixir = waterElixir + Random.Range(4, 7);
+        ironElixir = ironElixir + Random.Range(4, 7);
+        earthElixir = earthElixir + Random.Range(4, 7);
+
+    }
+
     public int[] getElixirOrdered()
     {
         int[] elixirsOrdered = new int[] { fireElixir, waterElixir, ironElixir, earthElixir, basmiumElixir, lightningElixir, azureElixir};

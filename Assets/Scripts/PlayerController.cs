@@ -47,6 +47,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //remove later
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            Tool currentTool = inventoryManager.GetComponent<InventoryManager>().getCurrentTool();
+            Debug.Log(currentTool.name);
+        }
+
         var shiningTiles = makeShiningTile.getShiningTiles();
         if (shiningTiles.Contains(transform.position) && Input.GetKeyDown(KeyCode.Space))
         {
@@ -114,9 +121,9 @@ public class PlayerController : MonoBehaviour
     {
         Tool currentTool = inventoryManager.GetComponent<InventoryManager>().getCurrentTool();
 
-        if(Physics2D.OverlapCircle(transform.position, 0.6f, elixirSmallHammerLayer) != null && currentTool.toolId == 1)
+        if(Physics2D.OverlapCircle(transform.position, 0.6f, elixirSmallHammerLayer) != null && currentTool.toolId == 1) //toolId 1 corresponds to a hammer
         {
-            Debug.Log("Yess");
+            elixirManager.GetComponent<ElixirSystem>().elixirSmallHammerTrigger();
         }
     }
 
